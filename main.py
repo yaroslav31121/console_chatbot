@@ -3,11 +3,12 @@ The first test version of the chatbot
 Course project after completing the Python Started course
 
 """
+import random
+
 import pyjokes
+
 import game_guess_the_number
 import game_stone_scissors_paper
-import interested_history
-# import logo
 
 
 def main():
@@ -149,26 +150,24 @@ def games():
 def display_story():
     """
     Displays an interesting history story based on user input.
-
-    Returns:
-    None
     """
-    print("1. Звуковий бар’єр\n"
-          "2. Таблиця множення\n"
-          "3. Куди плавали вікінги?\n"
-          "4. Хто придумав алфавіт\n"
-          "5. Теорема Байєса\n"
-          "6. Що таке нескінченність?")
+    stories = [
+        "Once upon a time...",
+        "In a land far away...",
+        "Long ago, there lived a king...",
+        # Add more stories as needed
+    ]
 
-    stories_dict = interested_history.interested_history()
-    user_choice = input("Виберіть число від 1 до 6: ")
-
-    if user_choice.isdigit() and 1 <= int(user_choice) <= 6:
-        story_number = int(user_choice)
-        story = stories_dict[story_number]
-        print(story)
-    else:
-        print("Некоректний вибір. Спробуйте ввести число від 1 до 6.")
+    print("Зараз я вам розповім дивовижну історію\nБажаєте послухати? так або Ні ")
+    while True:
+        choose_story = input(">>>>  ").capitalize().lower()
+        if choose_story == "так":
+            random_story = random.choice(stories)
+            print(random_story)
+        elif choose_story == "ні":
+            break
+        else:
+            print("Так або Ні")
 
 
 if __name__ == "__main__":
